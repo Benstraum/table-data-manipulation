@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware,combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   // tells the saga middleware to use the rootReducer
   // rootSaga contains all of our other reducers
-  rootReducer,
+  combineReducers(rootReducer),
   // adds all middleware to our project including saga and logger
   applyMiddleware(sagaMiddleware),
 );

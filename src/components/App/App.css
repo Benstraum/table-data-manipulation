@@ -1,0 +1,41 @@
+body{
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #373a3c;
+    text-align: left;
+}
+.App table{
+    text-align: center;
+    width: 60%;
+    margin: auto;
+  
+}
+th,td,tr{
+    width: min-content;
+}
+.App{
+    padding: 30px;
+    width: 50%;
+    margin:auto;
+}
+ thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    text-align: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 2px;
+}

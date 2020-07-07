@@ -1,17 +1,15 @@
 
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux'
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-function log(value) {
-  console.log(value); //eslint-disable-line
-}
+
 
 class TableSlider extends Component {
     state = {
-      lowerBound: 20,
-      upperBound: 40,
-      value: [20, 40],
+      lowerBound: 0,
+      upperBound: 94,
+      value: [0, 94],
     };
   
 //functions seperately target upper and lower in state to slider value
@@ -25,7 +23,7 @@ class TableSlider extends Component {
 
   //functions goes off establishing the array with upper and lower bound. will use to establish where to splice array.
   onSliderChange = value => {
-    log(value);
+this.props.dispatch({type:'SET_RANGE', payload:value})
     this.setState({
       value,
     });
@@ -35,13 +33,12 @@ class TableSlider extends Component {
     const { lowerBound, upperBound } = this.state;
     this.setState({ value: [lowerBound, upperBound] });
   };
-
   render() {
     return (
       <div>
-        <Range allowCross={false} value={this.state.value} onChange={this.onSliderChange} />
+        <Range allowCross={false}   value={this.state.value} min={0} max={this.props.array.length}  onChange={this.onSliderChange} />
       </div>
     );
   }
 }
-export default TableSlider
+export default connect()(TableSlider);
