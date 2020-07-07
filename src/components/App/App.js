@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-
+import Slider from '../TableSlider/TableSlider'
 class App extends Component {
   //when component mounts we will fire a dispatch to get necessary info 
   componentDidMount(){
     
     this.props.dispatch({type:'GET_TABLE_DATA'})
-   
   }
   state={
 
   }
   reOrderInfo=(array)=>{
-    //making function to sort array upon entry 
+    console.log(array.sort((a, b) => (a.year > b.year) ? 1 : -1))
+
 }
 
   
   render(){
-    console.log(this.props.state)
+    this.reOrderInfo(this.props.state)
   return (
     <div className="App">
+      <Slider />
       <table>
         <thead>
           <tr>
@@ -29,13 +30,16 @@ class App extends Component {
           </tr>
         </thead>
         <tbody>
-        {/* {this.state.map((item,i)=>(
+        {this.props.state.map((item,i)=>(
           <tr key={i}>
-            <th>{item.year}</th>
-        <th>{item.totalReturn}</th>
-            <th>tbd</th>
+            <td>{item.year}</td>
+        <td>{item.totalReturn}</td>
+           {i===0?
+           <td key={i}>{item.totalReturn}</td>
+           : 
+           <td>{parseInt(item.totalReturn)+parseInt(this.props.state[i-1].totalReturn)}</td>}
           </tr>
-        ))} */}
+        ))}
         </tbody>
       </table>
     </div>

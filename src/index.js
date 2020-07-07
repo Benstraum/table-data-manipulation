@@ -11,7 +11,6 @@ import rootSaga from './redux/sagas'
 
 const sagaMiddleware = createSagaMiddleware();
 
-//I am moving forward using only reducers for now because of CORS errors when I tried using a get request to that site for the data object
 
 
 const store = createStore(

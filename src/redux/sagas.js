@@ -12,8 +12,7 @@ function* rootSaga(){
    function* getData(){
       let url = 'https://www.slickcharts.com/sp500/returns/history.json'
         const responsePayload = yield axios.get(`https://cors-anywhere.herokuapp.com/${url}`)
-    console.log('in saga get', responsePayload)
-    yield put({ type:'SET_TABLE_DATA', payload: responsePayload})
+    yield put({ type:'SET_TABLE_DATA', payload: responsePayload.data})
    }
 
     export default rootSaga
