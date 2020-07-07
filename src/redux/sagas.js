@@ -3,13 +3,17 @@ import { takeEvery, put } from 'redux-saga/effects'
 
 
 
-// CORS error upon get request. will use only reducers for now
+
 function* rootSaga(){
     yield takeEvery('GET_TABLE_DATA',getData)
 }
-function* getData() {
-    const responsePayload = yield axios.get(`https://www.slickcharts.com/sp500/returns/history.json`)
-    console.log('in saga get', responsePayload )
+
+//first time dealing with cors. used this heroku app as a form of proxy to get past the CORS same origin issue.
+   function* getData(){
+      let url = 'https://www.slickcharts.com/sp500/returns/history.json'
+        const responsePayload = yield axios.get(`https://cors-anywhere.herokuapp.com/${url}`)
+    console.log('in saga get', responsePayload)
     yield put({ type:'SET_TABLE_DATA', payload: responsePayload})
-}
+   }
+
     export default rootSaga
