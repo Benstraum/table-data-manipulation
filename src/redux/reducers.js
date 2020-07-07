@@ -4,6 +4,7 @@
 const totalReturns =(state=[], action)=>{
     switch (action.type) {
         case 'SET_TABLE_DATA':
+            console.log('in reducer', action.payload)
             return action.payload;
         default:
             return state;
