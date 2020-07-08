@@ -41,7 +41,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>S&P 500 Total and Cumulative Returns by Year</h1>
+        <p style={{textAlign:'center'}}><i>use slider to change date range</i></p>
         <div className='slider'>
+          
         <Slider array={array} />
         <p style={{ float: "left" }}>(1926)</p>
         <p style={{ float: "right" }}>(2019)</p>

@@ -36,7 +36,7 @@ this.props.dispatch({type:'SET_RANGE', payload:value})
   render() {
     return (
       <div>
-        <Range allowCross={false}   value={this.state.value} min={0} max={this.props.array.length}  onChange={this.onSliderChange} />
+        <Range allowCross={false} label='Date range for S&P'  value={this.state.value} min={0} max={this.props.array.length}  onChange={this.onSliderChange} />
       </div>
     );
   }
