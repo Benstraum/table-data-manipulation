@@ -10,7 +10,7 @@ but once it is up and running everything will function as intended.
 
 
 * Run `npm install`
-* Run `npm run start`
+* Run `npm start`
 * Navigate to `localhost:3000`
 
 
