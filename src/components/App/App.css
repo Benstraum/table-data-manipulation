@@ -5,6 +5,10 @@ body{
     line-height: 1.5;
     color: #373a3c;
     text-align: left;
+    
+}
+.slider{
+    width:75%;
 }
 .App table{
     text-align: center;
@@ -14,6 +18,9 @@ body{
 }
 th,td,tr{
     width: min-content;
+}
+th{
+    max-width: 100px;
 }
 .App{
     padding: 30px;
@@ -34,6 +41,12 @@ tr {
     display: table-row;
     vertical-align: inherit;
     border-color: inherit;
+    
+}
+
+tr:hover {
+  background-color: rgb(221, 215, 215);
+
 }
 table {
     border-collapse: collapse;

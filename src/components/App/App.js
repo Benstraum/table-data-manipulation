@@ -8,9 +8,6 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'GET_TABLE_DATA' })
   }
-  state = {
-   indexArr:''
-  }
   //this orders the array in ascending years
   reOrderInfo = (array) => {
     let newArr = array.sort((a, b) => (a.year > b.year) ? 1 : -1)
@@ -44,22 +41,23 @@ class App extends Component {
     return (
       <div className="App">
         <h1>S&P 500 Total and Cumulative Returns by Year</h1>
+        <div className='slider'>
         <Slider array={array} />
         <p style={{ float: "left" }}>(1926)</p>
         <p style={{ float: "right" }}>(2019)</p>
-        <br />
+        </div>
         <table >
           <thead>
             <tr>
               <th>Year</th>
-              <th>Total Return(%)</th>
-              <th>Cumulative Returns<br /> by year(%)</th>
+              <th>Total Return</th>
+              <th>Cumulative Returns by Year</th>
             </tr>
           </thead>
           <tbody>
 
             {slicedArr.map((item, i) => (
-              <tr key={i}>
+              <tr key={i} >
                 <td>{item.year}</td>
                 {item.totalReturn < 0 ? 
                 <td style={{ color: 'red' }}>{item.totalReturn}</td> 
