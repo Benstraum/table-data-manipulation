@@ -9,8 +9,7 @@ class App extends Component {
     this.props.dispatch({ type: 'GET_TABLE_DATA' })
   }
   state = {
-    start: 0,
-    end: 95
+   indexArr:''
   }
   //this orders the array in ascending years
   reOrderInfo = (array) => {
@@ -27,10 +26,10 @@ class App extends Component {
 
   sumValues = (array, prop, i) => {
     //this targets values 
-    let targetProp = array.map(item => parseInt(item[prop]))
+    let targetProp = array.map(item => parseInt(item[prop]) )
     //this will add subsequent values
-    const add = arr => arr.reduce((a, b) => a + b, 0);
-    //this makes it so it sums up at each point in the table
+    const add = arr => arr.reduce((a, b) => parseInt(a)+ parseInt(b));
+    //this makes it so it sums up at each point in the table (rounded down)
     let result = targetProp.slice(0, i)
     return add(result)
   }
@@ -55,7 +54,6 @@ class App extends Component {
               <th>Year</th>
               <th>Total Return(%)</th>
               <th>Cumulative Returns<br /> by year(%)</th>
-              <th>Cumulative from<br /> {}(%)</th>
             </tr>
           </thead>
           <tbody>
@@ -63,9 +61,14 @@ class App extends Component {
             {slicedArr.map((item, i) => (
               <tr key={i}>
                 <td>{item.year}</td>
-                {item.totalReturn < 0 ? <td style={{ color: 'red' }}>{item.totalReturn}</td> : <td>{item.totalReturn}</td>}
-                <td>{this.sumValues(slicedArr, 'totalReturn', i + 1)} </td>
-                {i === 0 && <td>{this.sumValues(slicedArr, 'totalReturn', this.props.range[1])}</td>}
+                {item.totalReturn < 0 ? 
+                <td style={{ color: 'red' }}>{item.totalReturn}</td> 
+                : 
+                <td>{item.totalReturn}</td>}
+                {this.sumValues(slicedArr, 'totalReturn', i + 1) <0 ?
+                <td style={{ color: 'red' }}>{this.sumValues(slicedArr, 'totalReturn', i + 1)} </td>
+                :
+                <td>{this.sumValues(slicedArr, 'totalReturn', i + 1)} </td>}
               </tr>
             ))}
           </tbody>
